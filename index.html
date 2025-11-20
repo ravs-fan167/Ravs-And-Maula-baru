@@ -1,278 +1,124 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ravs Panel - Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" />
-  <style>
-    /* small custom styles */
-    .sidebar { width: 260px; }
-    .logo { font-weight:800; letter-spacing: .6px; }
-    .card { background: white; border-radius: 12px; padding: 18px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
-    .menu-item.active { background: rgba(34,197,94,0.08); color: #065f46; }
-    /* make layout scroll nicely */
-    body { background: #f3f6f8; }
-    .scrollbar-hide::-webkit-scrollbar { display: none; }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ravs Store - VPS, Hosting, Domain</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="antialiased text-slate-700">
-  <div class="flex min-h-screen">
-    <!-- Sidebar -->
-    <aside class="sidebar bg-white border-r p-4 sticky top-0 h-screen">
-      <div class="mb-6">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded bg-green-500 flex items-center justify-center text-white">R</div>
-          <div>
-            <div class="logo text-lg">Ravs Panel</div>
-            <div class="text-xs text-slate-400">v1.0 • Ravs</div>
-          </div>
+<body class="bg-gradient-to-b from-blue-300 to-black text-white min-h-screen">
+    <header class="p-5 bg-black/40 backdrop-blur-md shadow-lg">
+        <h1 class="text-3xl font-bold text-center">Ravs Store</h1>
+        <p class="text-center text-blue-200">VPS / RDP • Hosting • Domain</p>
+    </header>
+
+    <section class="max-w-5xl mx-auto mt-10">
+        <h2 class="text-2xl font-semibold mb-5">Pilih Kategori</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- VPS/RDP -->
+            <a href="#vps" class="block bg-black/30 hover:bg-black/50 p-6 rounded-2xl shadow-xl transition">
+                <h3 class="text-xl font-bold text-blue-300 mb-3">VPS / RDP</h3>
+                <p class="text-sm text-gray-300">Kualitas terbaik dengan harga murah, cocok untuk bot / script / hosting.</p>
+            </a>
+            
+            <!-- Hosting -->
+            <a href="#hosting" class="block bg-black/30 hover:bg-black/50 p-6 rounded-2xl shadow-xl transition">
+                <h3 class="text-xl font-bold text-blue-300 mb-3">Hosting</h3>
+                <p class="text-sm text-gray-300">Mulai website kamu dengan hosting cepat dan aman.</p>
+            </a>
+
+            <!-- Domain -->
+            <a href="#domain" class="block bg-black/30 hover:bg-black/50 p-6 rounded-2xl shadow-xl transition">
+                <h3 class="text-xl font-bold text-blue-300 mb-3">Domain</h3>
+                <p class="text-sm text-gray-300">Dapatkan domain keren untuk brand atau project kamu.</p>
+            </a>
         </div>
-      </div>
+    </section>
 
-      <nav class="space-y-1 text-sm">
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="dashboard"><i class='bx bx-home'></i><span>Home</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="website"><i class='bx bx-world'></i><span>Website</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="wp"><i class='bx bxl-wordpress'></i><span>WP Toolkit</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="ftp"><i class='bx bx-cloud'></i><span>FTP</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="databases"><i class='bx bx-server'></i><span>Databases</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="docker"><i class='bx bx-box'></i><span>Docker</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="monitor"><i class='bx bx-trending-up'></i><span>Monitor</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="security"><i class='bx bx-shield'></i><span>Security</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="waf"><i class='bx bx-lock'></i><span>WAF</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="mail"><i class='bx bx-envelope'></i><span>Mail Server</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="files"><i class='bx bx-folder'></i><span>Files</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="logs"><i class='bx bx-task'></i><span>Logs</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="domains"><i class='bx bx-globe'></i><span>Domains</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="account"><i class='bx bx-user'></i><span>Account</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="terminal"><i class='bx bx-terminal'></i><span>Terminal</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="cron"><i class='bx bx-repeat'></i><span>Cron</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="appstore"><i class='bx bx-store'></i><span>App Store</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50" data-route="settings"><i class='bx bx-cog'></i><span>Settings</span></a>
-        <a class="menu-item flex items-center gap-3 p-2 rounded hover:bg-slate-50 text-red-600" data-route="logout"><i class='bx bx-log-out'></i><span>Log out</span></a>
-      </nav>
+    <!-- VPS Section -->
+    <section id="vps" class="max-w-5xl mx-auto mt-16">
+        <h2 class="text-2xl font-semibold mb-5 border-b border-blue-400 pb-2">Daftar VPS / RDP</h2>
 
-      <div class="mt-6 text-xs text-slate-400">
-        <div>Debian 12 • Up time: 319 Day(s)</div>
-        <div class="mt-2">Support: <span class="text-slate-600">Telegram / Discord</span></div>
-      </div>
-    </aside>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-black/40 p-6 rounded-2xl shadow-xl">
+                <h3 class="text-xl font-bold text-blue-300">VPS Basic</h3>
+                <p class="text-sm mt-2">1 vCPU • 1GB RAM • 20GB SSD</p>
+                <p class="text-lg mt-3 font-semibold text-blue-200">Rp 35.000 / bulan</p>
+                <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-xl">Beli Sekarang</button>
+            </div>
 
-    <!-- Main content -->
-    <main class="flex-1 p-6">
-      <header class="mb-6 flex items-center justify-between">
-        <div>
-          <h1 class="text-2xl font-semibold" id="page-title">Dashboard</h1>
-          <p class="text-sm text-slate-500">Overview and quick actions</p>
+            <div class="bg-black/40 p-6 rounded-2xl shadow-xl">
+                <h3 class="text-xl font-bold text-blue-300">VPS Medium</h3>
+                <p class="text-sm mt-2">2 vCPU • 4GB RAM • 40GB SSD</p>
+                <p class="text-lg mt-3 font-semibold text-blue-200">Rp 75.000 / bulan</p>
+                <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-xl">Beli Sekarang</button>
+            </div>
+
+            <div class="bg-black/40 p-6 rounded-2xl shadow-xl">
+                <h3 class="text-xl font-bold text-blue-300">VPS Pro</h3>
+                <p class="text-sm mt-2">4 vCPU • 8GB RAM • 80GB SSD</p>
+                <p class="text-lg mt-3 font-semibold text-blue-200">Rp 140.000 / bulan</p>
+                <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-xl">Beli Sekarang</button>
+            </div>
         </div>
-        <div class="flex items-center gap-3">
-          <div class="text-sm text-slate-500">Admin</div>
-          <div class="w-10 h-10 rounded bg-slate-200 flex items-center justify-center">A</div>
+    </section>
+
+    <!-- Hosting Section -->
+    <section id="hosting" class="max-w-5xl mx-auto mt-16">
+        <h2 class="text-2xl font-semibold mb-5 border-b border-blue-400 pb-2">Paket Hosting</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-black/40 p-6 rounded-2xl shadow-xl">
+                <h3 class="text-xl font-bold text-blue-300">Hosting Starter</h3>
+                <p class="text-sm mt-2">1GB Storage • Unlimited Bandwidth</p>
+                <p class="text-lg mt-3 font-semibold text-blue-200">Rp 10.000 / bulan</p>
+                <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-xl">Beli Sekarang</button>
+            </div>
+
+            <div class="bg-black/40 p-6 rounded-2xl shadow-xl">
+                <h3 class="text-xl font-bold text-blue-300">Hosting Business</h3>
+                <p class="text-sm mt-2">5GB Storage • Unlimited Bandwidth</p>
+                <p class="text-lg mt-3 font-semibold text-blue-200">Rp 25.000 / bulan</p>
+                <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-xl">Beli Sekarang</button>
+            </div>
+
+            <div class="bg-black/40 p-6 rounded-2xl shadow-xl">
+                <h3 class="text-xl font-bold text-blue-300">Hosting Pro</h3>
+                <p class="text-sm mt-2">20GB Storage • Unlimited Bandwidth</p>
+                <p class="text-lg mt-3 font-semibold text-blue-200">Rp 55.000 / bulan</p>
+                <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-xl">Beli Sekarang</button>
+            </div>
         </div>
-      </header>
+    </section>
 
-      <section id="content-area">
-        <!-- Dashboard content -->
-        <div id="dashboard" class="space-y-6">
-          <div class="grid grid-cols-3 gap-4">
-            <div class="card col-span-2">
-              <div class="flex items-center justify-between">
-                <div>
-                  <div class="text-xs text-slate-400">Sys Status</div>
-                  <div class="text-3xl font-bold">2%</div>
-                  <div class="text-sm text-slate-500">Smooth operation — Load status</div>
-                </div>
-                <div class="text-right">
-                  <div class="text-xs text-slate-400">RAM Usage</div>
-                  <div class="text-xl font-semibold">34.2%</div>
-                  <div class="text-xs text-slate-400">5471 / 15991 MB</div>
-                </div>
-              </div>
+    <!-- Domain Section -->
+    <section id="domain" class="max-w-5xl mx-auto mt-16 mb-20">
+        <h2 class="text-2xl font-semibold mb-5 border-b border-blue-400 pb-2">Daftar Domain</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-black/40 p-6 rounded-2xl shadow-xl">
+                <h3 class="text-xl font-bold text-blue-300">.com</h3>
+                <p class="text-lg mt-3 font-semibold text-blue-200">Rp 120.000 / tahun</p>
+                <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-xl">Beli Sekarang</button>
             </div>
 
-            <div class="card">
-              <div class="text-xs text-slate-400">Disk</div>
-              <div class="mt-2">
-                <div class="text-lg font-semibold">/ 9% • /www 88%</div>
-                <div class="text-xs text-slate-500">80.61 / 1005.44 GB • 12.20 / 13.97 TB</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-4 gap-4">
-            <div class="card col-span-3">
-              <div class="grid grid-cols-4 gap-4">
-                <div class="p-3">
-                  <div class="text-xs text-slate-400">Site</div>
-                  <div class="text-2xl font-bold">105</div>
-                </div>
-                <div class="p-3">
-                  <div class="text-xs text-slate-400">FTP</div>
-                  <div class="text-2xl font-bold">83</div>
-                </div>
-                <div class="p-3">
-                  <div class="text-xs text-slate-400">DB</div>
-                  <div class="text-2xl font-bold">107</div>
-                </div>
-                <div class="p-3">
-                  <div class="text-xs text-slate-400">Security</div>
-                  <div class="text-2xl font-bold">7</div>
-                </div>
-              </div>
-
-              <div class="mt-4">
-                <div class="text-xs text-slate-400 mb-2">Software</div>
-                <div class="grid grid-cols-3 gap-3">
-                  <div class="card">MySQL 5.7.43</div>
-                  <div class="card">PHP 8.1</div>
-                  <div class="card">Nginx 1.22.1</div>
-                  <div class="card">Pure-FTPd 1.0.49</div>
-                  <div class="card">SYS Firewall 2.7</div>
-                  <div class="card">Nginx WAF 9.6.8</div>
-                </div>
-              </div>
+            <div class="bg-black/40 p-6 rounded-2xl shadow-xl">
+                <h3 class="text-xl font-bold text-blue-300">.my.id</h3>
+                <p class="text-lg mt-3 font-semibold text-blue-200">Rp 15.000 / tahun</p>
+                <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-xl">Beli Sekarang</button>
             </div>
 
-            <div class="card">
-              <div class="text-xs text-slate-400">Traffic</div>
-              <div class="mt-3">
-                <div class="text-sm">Upstream 0.56 KB • Downstream 0.32 KB</div>
-                <div class="mt-4 h-32 bg-slate-50 rounded flex items-center justify-center text-slate-400">Chart placeholder</div>
-              </div>
+            <div class="bg-black/40 p-6 rounded-2xl shadow-xl">
+                <h3 class="text-xl font-bold text-blue-300">.store</h3>
+                <p class="text-lg mt-3 font-semibold text-blue-200">Rp 75.000 / tahun</p>
+                <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-xl">Beli Sekarang</button>
             </div>
-          </div>
-
-          <div class="grid grid-cols-3 gap-4">
-            <div class="card col-span-2">
-              <div class="text-xs text-slate-400">Monitor</div>
-              <div class="mt-3">Metrics & logs preview</div>
-            </div>
-            <div class="card">
-              <div class="text-xs text-slate-400">Quick Actions</div>
-              <div class="mt-3 flex flex-col gap-2">
-                <button class="py-2 px-3 rounded bg-green-500 text-white">Restart Service</button>
-                <button class="py-2 px-3 rounded border">Open Terminal</button>
-              </div>
-            </div>
-          </div>
         </div>
+    </section>
 
-        <!-- Generic pages templates -->
-        <div id="page-template" class="hidden">
-          <div class="card">
-            <div class="text-sm text-slate-500" id="page-desc"></div>
-            <div class="mt-4" id="page-body"></div>
-          </div>
-        </div>
-
-        <!-- Logs content (example) -->
-        <div id="logs" class="hidden">
-          <div class="card">
-            <div class="text-xs text-slate-400">System Logs</div>
-            <div class="mt-3">
-              <pre id="log-output" class="text-xs bg-slate-50 p-3 rounded h-64 overflow-auto">[2025-11-13 12:00] RavsPanel started
-[2025-11-13 12:02] Nginx restarted
-[2025-11-13 12:05] Backup completed</pre>
-            </div>
-          </div>
-        </div>
-
-        <!-- Docker content -->
-        <div id="docker" class="hidden">
-          <div class="card">
-            <div class="text-xs text-slate-400">Docker Containers</div>
-            <div class="mt-3 space-y-2" id="docker-list">
-              <div class="p-3 border rounded">container-1 • running</div>
-              <div class="p-3 border rounded">container-db • exited</div>
-              <div class="p-3 border rounded">container-web • running</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Terminal mock -->
-        <div id="terminal" class="hidden">
-          <div class="card">
-            <div class="text-xs text-slate-400">Terminal</div>
-            <div class="mt-3 bg-black text-green-400 p-3 rounded h-64 overflow-auto" id="terminal-output"># welcome to ravs terminal
-$ </div>
-            <div class="mt-2">
-              <input id="term-input" class="w-full p-2 border rounded" placeholder="type command like 'uptime'"/>
-            </div>
-          </div>
-        </div>
-
-      </section>
-    </main>
-  </div>
-
-  <script>
-    // simple router
-    const items = document.querySelectorAll('.menu-item');
-    const contentArea = document.getElementById('content-area');
-    const pageTitle = document.getElementById('page-title');
-
-    function hideAllSections() {
-      document.querySelectorAll('#content-area > div').forEach(el => el.classList.add('hidden'));
-    }
-
-    function showDashboard() {
-      hideAllSections();
-      document.getElementById('dashboard').classList.remove('hidden');
-      pageTitle.textContent = 'Dashboard';
-    }
-
-    function showPage(route) {
-      hideAllSections();
-      pageTitle.textContent = route[0].toUpperCase() + route.slice(1);
-      // map routes to sections or generic page
-      if (route === 'dashboard') { showDashboard(); return; }
-      if (route === 'logs') {
-        document.getElementById('logs').classList.remove('hidden'); return;
-      }
-      if (route === 'docker') {
-        document.getElementById('docker').classList.remove('hidden'); return;
-      }
-      if (route === 'terminal') {
-        document.getElementById('terminal').classList.remove('hidden'); return;
-      }
-      // generic
-      const tpl = document.getElementById('page-template').cloneNode(true);
-      tpl.id = '';
-      tpl.classList.remove('hidden');
-      tpl.querySelector('#page-desc').textContent = 'Halaman ' + pageTitle.textContent + ' belum terhubung ke backend. Ini tampilan contoh.';
-      tpl.querySelector('#page-body').innerHTML = '<div class="text-sm text-slate-500">Contoh isi untuk ' + pageTitle.textContent + '.</div>';
-      contentArea.appendChild(tpl);
-    }
-
-    items.forEach(it => {
-      it.addEventListener('click', () => {
-        items.forEach(i=>i.classList.remove('active'));
-        it.classList.add('active');
-        const route = it.dataset.route;
-        showPage(route);
-      });
-    });
-
-    // initialize active
-    document.querySelector('.menu-item[data-route="dashboard"]').classList.add('active');
-    showDashboard();
-
-    // terminal demo input
-    const termInput = document.getElementById('term-input');
-    const termOutput = document.getElementById('terminal-output');
-    if (termInput) {
-      termInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          const v = termInput.value.trim();
-          termOutput.textContent += '\\n$ ' + v;
-          if (v === 'uptime') termOutput.textContent += '\\nup 319 days';
-          if (v === 'ls') termOutput.textContent += '\\nwww\\nlogs\\ndocker';
-          termInput.value = '';
-          termOutput.scrollTop = termOutput.scrollHeight;
-        }
-      });
-    }
-  </script>
+    <footer class="text-center py-6 bg-black/50 mt-10">
+        <p class="text-sm text-gray-400">© 2025 Ravs Store. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
